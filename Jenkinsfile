@@ -6,7 +6,7 @@ pipeline {
     environment {
        AWS_ACCESS_KEY_ID = credentials('AWS_ACCESS_KEY_ID')
        AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
-       AWS_DEFAULT_REGION = "us-east-1"
+       AWS_DEFAULT_REGION = "us-east-2"
     }
 
     stages {
@@ -65,7 +65,7 @@ pipeline {
             steps {
                 script {
                     dir('kubernetes') {
-                        sh "aws eks --region us-east-1 update-kubeconfig --name my-eks-cluster"
+                        sh "aws eks --region us-east-2 update-kubeconfig --name my-eks-cluster"
                         sh "kubectl apply -f cookiesweb-manifest.yaml"
                         sh "kubectl apply -f cookiesweb-service-manifest.yaml"
                     }
